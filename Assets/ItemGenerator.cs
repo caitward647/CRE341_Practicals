@@ -29,9 +29,6 @@ public class ItemGenerator : MonoBehaviour
             return;
         }
 
-        surface.BuildNavMesh();
-
-        
         SpawnWayPoints(numberWaypoints);
         SpawnItems(numberOfItems); //generate items into world
     }
