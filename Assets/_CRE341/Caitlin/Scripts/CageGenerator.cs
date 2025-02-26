@@ -1,0 +1,165 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System;
+using Unity.AI.Navigation;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
+using UnityEditor.ShaderGraph.Internal;
+
+public class CageGenerator : MonoBehaviour
+
+{
+    public GameObject player; // Reference to your player prefab
+    public GameObject CagePrefab, waypointsPrefab; // Reference to your cage prefab
+    public GameObject groundObject;
+    public int width;
+    public int height;
+
+    [SerializeField] int numberOfCages = 5;
+    [SerializeField] List<GameObject> cages = new List<GameObject>();
+    [SerializeField] int numberWaypoints = 4;
+    [SerializeField] List<GameObject> waypoints = new List<GameObject>();
+
+    [SerializeField] public NavMeshSurface surface;
+    [SerializeField] private float raycastHeight = 50f; // Height above the plane from which to cast rays.
+    [SerializeField] private int maxAttempts = 1000; // Safety limit to avoid an infinite loop.
+
+    void Start()
+    {
+
+        if (groundObject == null)
+        {
+            Debug.LogError("No object tagged 'Ground' found. Make sure your ground plane is tagged correctly.");
+            return;
+        }
+
+        surface.BuildNavMesh();
+
+        SpawnWayPoints(numberWaypoints);
+        SpawnItems(numberOfCages);
+    }
+
+
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            surface.BuildNavMesh();
+
+            // delete existing NPCs and spawn new ones
+            GameObject[] go_cages = GameObject.FindGameObjectsWithTag("Cage");
+            foreach (GameObject Cage in go_cages) Destroy(Cage);
+
+
+            GameObject[] go_wps = GameObject.FindGameObjectsWithTag("Waypoint");
+            foreach (GameObject wp in go_wps) Destroy(wp);
+
+            SpawnWayPoints(numberWaypoints);
+            SpawnItems(numberOfCages);
+        }
+    }
+
+    public Vector3 GetRandomGroundPoint()
+    {
+        Bounds groundBounds = groundObject.GetComponent<Renderer>().bounds;
+
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            // Pick a random position within the specified X-Z range, at a fixed height.
+            float randX = Random.Range(groundBounds.min.x, groundBounds.max.x);
+            float randZ = Random.Range(groundBounds.min.z, groundBounds.max.z);
+            Vector3 origin = new Vector3(randX, raycastHeight, randZ);
+
+            // Cast a ray straight down.
+            if (Physics.Raycast(origin, Vector3.down, out RaycastHit hit, Mathf.Infinity))
+            {
+                // Check if the first hit collider is tagged "Ground".
+                if (hit.collider.CompareTag("Ground"))
+                {
+                    return hit.point;
+                }
+            }
+        }
+
+        // If no suitable point is found after maxAttempts, return a default.
+        Debug.LogWarning("No valid 'Ground' point found.");
+        return Vector3.zero;
+    }
+    private void SpawnItems(int count)
+    {
+        int maxAttempts = 1000;
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 randomItems = Vector3.zero;
+            bool validPositionFound = false;
+            int attempts = 0;
+
+            while (!validPositionFound && attempts < maxAttempts)
+            {
+                randomItems = GetRandomGroundPoint();
+                if (randomItems != Vector3.zero)
+                {
+                    NavMeshHit hit;
+                    if (NavMesh.SamplePosition(randomItems, out hit, 1.0f, NavMesh.AllAreas))
+                    {
+                        randomItems = hit.position;
+                        validPositionFound = true;
+                    }
+                }
+                attempts++;
+            }
+
+            if (validPositionFound)
+            {
+                Instantiate(CagePrefab, randomItems, Quaternion.identity);
+                // add the NPC to the list
+                cages.Add(CagePrefab);
+            }
+            else
+            {
+                Debug.LogWarning("Failed to find a valid NavMesh point for cage.");
+            }
+        }
+    }
+
+    private void SpawnWayPoints(int count)
+    {
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 randomCages = Vector3.zero;
+            bool validPositionFound = false;
+            int attempts = 0;
+
+            while (!validPositionFound && attempts < maxAttempts)
+            {
+                randomCages = GetRandomGroundPoint();
+                if (randomCages != Vector3.zero)
+                {
+                    NavMeshHit hit;
+                    if (NavMesh.SamplePosition(randomCages, out hit, 1.0f, NavMesh.AllAreas))
+                    {
+                        randomCages = hit.position;
+                        validPositionFound = true;
+                    }
+                }
+                attempts++;
+            }
+
+            if (validPositionFound)
+            {
+                Instantiate(waypointsPrefab, randomCages, Quaternion.identity);
+                // add the item to the list
+                waypoints.Add(waypointsPrefab);
+            }
+            else
+            {
+                Debug.LogWarning("Failed to find a valid NavMesh point for Waypoint.");
+            }
+        }
+    }
+
+}
+
