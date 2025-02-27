@@ -30,14 +30,14 @@ namespace KeysSystem
 
             if (Physics.Raycast(transform.position, fwd, out hit, rayLength, mask))
             {
-                Debug.Log("Raycast true");
+              //  Debug.Log("Raycast true");
                 if (hit.collider.CompareTag(interactableTag))
                 {
-                    Debug.Log("collided with tag true");
+               //     Debug.Log("collided with tag true");
                     if (!doOnce)
                     {
                         raycastedObject = hit.collider.gameObject.GetComponent<KeyItemController>();
-                      Debug.Log("---" + raycastedObject);
+                  //    Debug.Log("---" + raycastedObject);
                         crossHairChange(true);
                     }
 
@@ -55,7 +55,7 @@ namespace KeysSystem
             {
                 if (isCrosshairActive)
                 {
-                    Debug.Log("crosshair active");
+                //    Debug.Log("crosshair active");
                     crossHairChange(false);
                     doOnce = false;
                 }
@@ -66,12 +66,12 @@ namespace KeysSystem
         {
             if (on && !doOnce)
             {
-                Debug.Log("RED");
+            //    Debug.Log("RED");
                 crosshair.color = Color.red;
             }
             else
             {
-                Debug.Log("White");
+            //    Debug.Log("White");
                 crosshair.color = Color.white;
                 isCrosshairActive = false;
             }
