@@ -22,7 +22,7 @@ namespace KeysSystem
 
         private void Update()
         {
-            Debug.Log("RAYCAST");
+           // Debug.Log("RAYCAST");
             RaycastHit hit;
             Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
@@ -30,12 +30,14 @@ namespace KeysSystem
 
             if (Physics.Raycast(transform.position, fwd, out hit, rayLength, mask))
             {
+                Debug.Log("Raycast true");
                 if (hit.collider.CompareTag(interactableTag))
                 {
+                    Debug.Log("collided with tag true");
                     if (!doOnce)
                     {
                         raycastedObject = hit.collider.gameObject.GetComponent<KeyItemController>();
-                     //   Debug.Log("---" + raycastedObject);
+                      Debug.Log("---" + raycastedObject);
                         crossHairChange(true);
                     }
 
@@ -64,6 +66,7 @@ namespace KeysSystem
         {
             if (on && !doOnce)
             {
+                Debug.Log("RED");
                 crosshair.color = Color.red;
             }
             else
