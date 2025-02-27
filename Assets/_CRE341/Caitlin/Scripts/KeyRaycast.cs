@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace KeySystem
+namespace KeysSystem
 {
     public class KeyRaycast : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace KeySystem
         [SerializeField] private string excluseLayerName = null;
 
         private KeyItemController raycastedObject;
-        [SerializeField] private KeyCode openCageKey = KeyCode.E;
+        [SerializeField] private KeyCode openCageKey = KeyCode.Mouse0;
 
         [SerializeField] private Image crosshair = null;
         private bool isCrosshairActive;
@@ -22,6 +22,7 @@ namespace KeySystem
 
         private void Update()
         {
+            Debug.Log("RAYCAST");
             RaycastHit hit;
             Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
@@ -52,6 +53,7 @@ namespace KeySystem
             {
                 if (isCrosshairActive)
                 {
+                    Debug.Log("crosshair active");
                     crossHairChange(false);
                     doOnce = false;
                 }
@@ -66,6 +68,7 @@ namespace KeySystem
             }
             else
             {
+                Debug.Log("White");
                 crosshair.color = Color.white;
                 isCrosshairActive = false;
             }

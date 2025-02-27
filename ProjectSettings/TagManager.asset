@@ -9,6 +9,11 @@ TagManager:
   - Walls
   - NPC
   - Waypoint
+  - Flocker
+  - crosshair
+  - interactiveObject
+  - Key
+  - Cage
   layers:
   - Default
   - TransparentFX
@@ -18,7 +23,7 @@ TagManager:
   - UI
   - Ground
   - Wall
-  - 
+  - interact
   - 
   - 
   - 

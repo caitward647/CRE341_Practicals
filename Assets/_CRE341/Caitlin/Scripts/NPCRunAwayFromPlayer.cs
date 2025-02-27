@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NPCRunAwayFromPlayer : MonoBehaviour
 {
-    public float runSpeed = 5f;
+    public float runSpeed = 50f;
     public float safeDistance = 10f;
 
     private Transform player;

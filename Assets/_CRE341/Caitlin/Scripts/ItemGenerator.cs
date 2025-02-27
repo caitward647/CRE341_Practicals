@@ -48,7 +48,7 @@ public class ItemGenerator : MonoBehaviour
             surface.BuildNavMesh();
 
             // delete existing NPCs and spawn new ones
-            GameObject[] go_items = GameObject.FindGameObjectsWithTag("Item");
+            GameObject[] go_items = GameObject.FindGameObjectsWithTag("Key");
             foreach (GameObject item in go_items) Destroy(item);
 
 

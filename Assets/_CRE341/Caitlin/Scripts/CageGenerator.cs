@@ -50,6 +50,7 @@ public class CageGenerator : MonoBehaviour
 
             // delete existing NPCs and spawn new ones
             GameObject[] go_cages = GameObject.FindGameObjectsWithTag("Cage");
+
             foreach (GameObject Cage in go_cages) Destroy(Cage);
 
 

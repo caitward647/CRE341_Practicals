@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace KeySystem
+namespace KeysSystem
 {
     public class KeyItemController : MonoBehaviour
     {
