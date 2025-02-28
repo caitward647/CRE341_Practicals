@@ -13,11 +13,11 @@ public class CaptureCount : MonoBehaviour
         UiText.SetActive(false);
     }
 
-    void OnTrigger(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collided with cage floor");
       //  if (gameObject.tag == "CageFloor")
-      if (CageFloor)
+      if (other.gameObject.tag == "CageFloor")
         {
             UiText.SetActive(true);
             Debug.Log("UI active");

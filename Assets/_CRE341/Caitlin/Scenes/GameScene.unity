@@ -4882,7 +4882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1639033590}
-  remainingTime: 4
+  remainingTime: 300
   GameOverCanvas: {fileID: 37517674}
   playerCamera: {fileID: 1589067646}
   Crosshair: {fileID: 770996719}
