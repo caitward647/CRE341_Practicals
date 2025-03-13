@@ -25,7 +25,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         npcRigidbody = GetComponent<Rigidbody>();
 
-        agent = GetComponent<NavMeshAgent>();
+       //agent = GetComponent<NavMeshAgent>();
         //  _isWandering = true;
 
         //RunAwayFromPlayer();
@@ -55,20 +55,30 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
 
         if (distanceToPlayer < safeDistance)
         {
+            Debug.Log("Running away from player");
+            // agent.enabled = false;
             Vector3 directionAwayFromPlayer = (transform.position - player.position).normalized; //finds distance
 
             Vector3 newPosition = transform.position + directionAwayFromPlayer * speed * Time.deltaTime;
             npcRigidbody.MovePosition(newPosition);
 
             //rotating when being chased. Looks away from player
-            Quaternion targetRotation = Quaternion.LookRotation(directionAwayFromPlayer);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+              Quaternion targetRotation = Quaternion.LookRotation(directionAwayFromPlayer);
+              transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
-        
+
+        else
+        {
+            Wander();
+        }
+
     }
 
     void Wander()
     {
+        Debug.Log("Wandering");
+        agent = GetComponent<NavMeshAgent>();
+        //  agent.enabled = true;
         if (player == null) return;
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
