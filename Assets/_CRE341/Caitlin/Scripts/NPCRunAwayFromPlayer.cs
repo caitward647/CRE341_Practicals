@@ -78,7 +78,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
 
        // if (distanceToPlayer < safeDistance)
         {
-            Debug.Log("Running away from player");
+          //  Debug.Log("Running away from player");
             // agent.enabled = false;
             // Vector3 directionAwayFromPlayer = (transform.position - player.position).normalized; //finds distance
 
@@ -120,7 +120,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
     void Wander()
     {
             {
-            Debug.Log("Wandering");
+           // Debug.Log("Wandering");
             agent = GetComponent<NavMeshAgent>();
             //  agent.enabled = true;
             if (player == null) return;
