@@ -365,6 +365,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2861205510030743380, guid: d9b2c2c6976c0d249a43a47d50b9092e, type: 3}
   m_PrefabInstance: {fileID: 2988891229452397531}
   m_PrefabAsset: {fileID: 0}
+--- !u!195 &186125870 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 3770567093011389689, guid: d9b2c2c6976c0d249a43a47d50b9092e, type: 3}
+  m_PrefabInstance: {fileID: 2988891229452397531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &238735249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6004892712701413065, guid: 79663a7e1d517414ca9310803a27fab1, type: 3}
@@ -872,7 +877,7 @@ MonoBehaviour:
   seed: 0
   useRandomSeed: 1
   randomFillPercent: 50
-  numberOfNPCs: 70
+  numberOfNPCs: 90
   npcs: []
   numberWaypoints: 4
   waypoints: []
@@ -5641,6 +5646,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 642083745306086717, guid: d9b2c2c6976c0d249a43a47d50b9092e, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 186125870}
+    - target: {fileID: 642083745306086717, guid: d9b2c2c6976c0d249a43a47d50b9092e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2861205510030743380, guid: d9b2c2c6976c0d249a43a47d50b9092e, type: 3}
       propertyPath: m_Name
       value: RatEnemy

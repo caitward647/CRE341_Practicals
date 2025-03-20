@@ -9,7 +9,7 @@ public class CaptureCount : MonoBehaviour
     public GameObject CageFloor;
     void Start()
     {
-        Debug.Log(" UI False");
+        //Debug.Log(" UI False");
         UiText.SetActive(true);
     }
 
@@ -17,7 +17,7 @@ public class CaptureCount : MonoBehaviour
     {
       if (other.gameObject.tag == "CageFloor")
         {
-            Debug.Log("npc enter cage");
+            //Debug.Log("npc enter cage");
             NPCManager.instance.npcCount++;
         }
     }
@@ -26,7 +26,7 @@ public class CaptureCount : MonoBehaviour
     {
         if (other.gameObject.tag == "CageFloor")
         {
-            Debug.Log("npc exit cage");
+           // Debug.Log("npc exit cage");
             NPCManager.instance.npcCount--;
         }
     }
