@@ -7,18 +7,22 @@ public class CaptureCount : MonoBehaviour
 {
     public GameObject UiText;
     public GameObject CageFloor;
+
+    public NPCRunAwayFromPlayer npcRun;
     void Start()
     {
         //Debug.Log(" UI False");
         UiText.SetActive(true);
+        npcRun = GetComponent<NPCRunAwayFromPlayer>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-      if (other.gameObject.tag == "CageFloor")
+        if (other.gameObject.tag == "CageFloor")
         {
             //Debug.Log("npc enter cage");
             NPCManager.instance.npcCount++;
+            npcRun.pauseAllMovement();
         }
     }
 
@@ -26,14 +30,11 @@ public class CaptureCount : MonoBehaviour
     {
         if (other.gameObject.tag == "CageFloor")
         {
-           // Debug.Log("npc exit cage");
+            // Debug.Log("npc exit cage");
             NPCManager.instance.npcCount--;
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            //stop rat wandering here
+            npcRun.Wander();
+        }
     }
 }

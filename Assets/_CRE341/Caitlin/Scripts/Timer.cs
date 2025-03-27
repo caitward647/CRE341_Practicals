@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
@@ -12,9 +13,9 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        GameOverCanvas.SetActive(false);
-        playerCamera.SetActive(true);
-        Crosshair.SetActive(true);
+       GameOverCanvas.SetActive(false);
+       playerCamera.SetActive(true);
+       Crosshair.SetActive(true);
     }
     void Update()
     {
@@ -25,11 +26,14 @@ public class Timer : MonoBehaviour
         else if (remainingTime < 0)
         {
             remainingTime = 1;
-            timerText.color = Color.red; // colour is red when time is 0:00
-            GameOverCanvas.SetActive(true);  //game over
-            Time.timeScale = 0; //stops player movement
-            playerCamera.SetActive(false); //stops players camera movement
-            Crosshair.SetActive(false); //turns off crossahir
+            timerText.color = Color.red; 
+             //colour is red when time is 0:00                                        
+             GameOverCanvas.SetActive(true);  //game over                                       
+            Time.timeScale = 0; //stops player movement                                         
+             playerCamera.SetActive(false); //stops players camera movement                                       
+             Crosshair.SetActive(false); //turns off crossahir
+
+           // SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
         }
 
         remainingTime -= Time.deltaTime; //created timer

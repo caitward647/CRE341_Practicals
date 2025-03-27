@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,6 +22,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         npcRigidbody = GetComponent<Rigidbody>();
+        _isWandering = true;
     }
 
     void Update()
@@ -39,9 +41,13 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
             RunAwayFromPlayer();
             
         }
-        else 
+        else if (_isWandering)
         {
             Wander();
+        }
+        else
+        {
+            pauseAllMovement();
         }
 
     }
@@ -61,7 +67,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
     }
 
     //wander
-    void Wander()
+    public void Wander()
     {
       {
        // Debug.Log("Wandering");
@@ -79,5 +85,14 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
                      agent.SetDestination(hit.position);
               }
       }
+    }
+
+    public void pauseAllMovement()
+    {
+        _isWandering = false;
+        Debug.Log("pausedAllMovement");
+        Rigidbody.Destroy(gameObject);
+        speed = 0;
+        gameObject.isStatic = true;
     }
 }
