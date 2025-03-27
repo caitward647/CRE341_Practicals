@@ -489,6 +489,7 @@ public class MapGenerator : MonoBehaviour {
         // If no suitable point is found after maxAttempts, return a default.
         Debug.LogWarning("No valid 'Ground' point found.");
         return Vector3.zero;
+        return Vector3.zero;
 	}
 	private void SpawnNPCs(int count)
 	{
