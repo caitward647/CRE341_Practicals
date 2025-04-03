@@ -47,7 +47,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
         }
         else
         {
-            pauseAllMovement();
+           // pauseAllMovement();
         }
 
     }

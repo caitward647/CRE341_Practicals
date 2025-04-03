@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class CaptureCount : MonoBehaviour
 {
     public GameObject UiText;
-    public GameObject CageFloor;
+  //  public GameObject CageFloor;
 
-    public NPCRunAwayFromPlayer npcRun;
+   // public NPCRunAwayFromPlayer npcRun;
     void Start()
     {
         //Debug.Log(" UI False");
         UiText.SetActive(true);
-        npcRun = GetComponent<NPCRunAwayFromPlayer>();
+       // npcRun = GetComponent<NPCRunAwayFromPlayer>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -22,7 +22,7 @@ public class CaptureCount : MonoBehaviour
         {
             //Debug.Log("npc enter cage");
             NPCManager.instance.npcCount++;
-            npcRun.pauseAllMovement();
+         //   npcRun.pauseAllMovement();
         }
     }
 
@@ -34,7 +34,7 @@ public class CaptureCount : MonoBehaviour
             NPCManager.instance.npcCount--;
 
             //stop rat wandering here
-            npcRun.Wander();
+           // npcRun.Wander();
         }
     }
 }
