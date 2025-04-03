@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -26,6 +25,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         npcRigidbody = GetComponent<Rigidbody>();
 <<<<<<< HEAD
+<<<<<<< HEAD
         _isWandering = true;
 =======
 
@@ -36,6 +36,8 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
 
      //   ratBehaviour();
 >>>>>>> parent of 42bc172 (code)
+=======
+>>>>>>> parent of 4bbbb32 (A lot is broken)
     }
 
     void Update()
@@ -66,14 +68,17 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
             RunAwayFromPlayer();
             
         }
-        else if (_isWandering)
+        else 
         {
             Wander();
         }
+<<<<<<< HEAD
         else
         {
            // pauseAllMovement();
         }
+=======
+>>>>>>> parent of 4bbbb32 (A lot is broken)
 
     }
 
@@ -126,7 +131,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
     }
 
     //wander
-    public void Wander()
+    void Wander()
     {
             {
            // Debug.Log("Wandering");
@@ -145,14 +150,5 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
                 agent.SetDestination(hit.position);
             }
         }
-    }
-
-    public void pauseAllMovement()
-    {
-        _isWandering = false;
-        Debug.Log("pausedAllMovement");
-        Rigidbody.Destroy(gameObject);
-        speed = 0;
-        gameObject.isStatic = true;
     }
 }
