@@ -15,6 +15,7 @@ TagManager:
   - Key
   - Cage
   - CageFloor
+  - UIText
   layers:
   - Default
   - TransparentFX

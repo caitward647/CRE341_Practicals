@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CaptureCount : MonoBehaviour
 {
-    public GameObject UiText;
+    public GameObject uiText;
 
   //  public GameObject CageFloor;
 
@@ -14,8 +14,16 @@ public class CaptureCount : MonoBehaviour
     public GameObject CageFloor;
     void Start()
     {
+        if (uiText == null)
+        {
+            uiText = GameObject.FindGameObjectWithTag("UIText");
+        }
+           if (uiText == null)
+        {
+            uiText = GameObject.FindGameObjectWithTag("CageFloor");
+        }
         //Debug.Log(" UI False");
-        UiText.SetActive(true);
+        uiText.SetActive(true);
        // npcRun = GetComponent<NPCRunAwayFromPlayer>();
     }
 

@@ -517,7 +517,9 @@ public class MapGenerator : MonoBehaviour {
 
 			if (validPositionFound)
 			{
-				Instantiate(npcPrefab, randomNPCPos, Quaternion.identity);
+				randomNPCPos.y +=3;
+				//Debug.Log($"{randomNPCPos}{i}");
+				Instantiate(npcPrefab, randomNPCPos , Quaternion.identity);
 				// add the NPC to the list
 				npcs.Add(npcPrefab);
 			}
