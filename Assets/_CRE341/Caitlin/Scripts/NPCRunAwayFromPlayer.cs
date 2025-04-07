@@ -27,8 +27,11 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
         npcRigidbody = GetComponent<Rigidbody>();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         _isWandering = true;
 =======
+=======
+>>>>>>> parent of 42bc172 (code)
 =======
 >>>>>>> parent of 42bc172 (code)
 
@@ -39,6 +42,9 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
 
      //   ratBehaviour();
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 42bc172 (code)
+=======
 >>>>>>> parent of 42bc172 (code)
 =======
 >>>>>>> parent of 42bc172 (code)
@@ -148,6 +154,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
             NavMeshHit hit;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               if (NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, NavMesh.AllAreas))
               {
                     
@@ -157,11 +164,14 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
 =======
 =======
 >>>>>>> parent of 42bc172 (code)
+=======
+>>>>>>> parent of 42bc172 (code)
             if (NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, NavMesh.AllAreas))
             {
                 agent.SetDestination(hit.position);
             }
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> parent of 42bc172 (code)
     }
@@ -173,6 +183,8 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
         Rigidbody.Destroy(gameObject);
         speed = 0;
         gameObject.isStatic = true;
+=======
+>>>>>>> parent of 42bc172 (code)
 =======
 >>>>>>> parent of 42bc172 (code)
     }
