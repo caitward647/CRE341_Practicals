@@ -29,12 +29,12 @@ public class Timer : MonoBehaviour
             GameOverCanvas.SetActive(true);  //game over
             Time.timeScale = 0; //stops player movement
             playerCamera.SetActive(false); //stops players camera movement
-            Crosshair.SetActive(false); //turns off crossahir
+            Crosshair.SetActive(false); //turns off crossahair
         }
 
         remainingTime -= Time.deltaTime; //created timer
         int minutes = Mathf.FloorToInt(remainingTime / 60); //deviding the timer into minutes and seconds
         int seconds = Mathf.FloorToInt(remainingTime % 60);
-        timerText.text = string.Format("{0:00}:{1:00}" , minutes, seconds); //Text
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds); //Text
     }
 }
