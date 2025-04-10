@@ -704,6 +704,7 @@ GameObject:
   - component: {fileID: 7994949413394980609}
   - component: {fileID: 6510593856702698289}
   - component: {fileID: 5312218889118457038}
+  - component: {fileID: 6501171810373464607}
   m_Layer: 0
   m_Name: Npc 1
   m_TagString: Untagged
@@ -859,6 +860,7 @@ MonoBehaviour:
   centrePoint: {fileID: 8981516390222307554}
   range: 100
   point: {x: 0, y: 0, z: 0}
+  animator: {fileID: 6501171810373464607}
 --- !u!54 &7994949413394980609
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -922,6 +924,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!95 &6501171810373464607
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118867819235103093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0185d0dc917d33c409a124fbb73d6555, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2224370087403417127
 GameObject:
   m_ObjectHideFlags: 0

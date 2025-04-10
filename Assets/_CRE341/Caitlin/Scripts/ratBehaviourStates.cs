@@ -10,6 +10,14 @@ public class ratBehaviourStates : MonoBehaviour
     private Transform player;
     private Rigidbody npcRigidbody;
 
+
+    //[Header("Animation Name")]
+    //[SerializeField] private string deadAnimationName = "RATDEAD";
+    //[SerializeField] private string idleAnimationName = "RatIdle";
+
+    private Animator npc1;
+    private bool isDead;
+
     public NavMeshAgent agent;
     public float wanderRadius = 10f;
     public float wanderInterval = 10f;
@@ -20,16 +28,22 @@ public class ratBehaviourStates : MonoBehaviour
     public int range;
     public Vector3 point;
 
-    private bool isDead;
+    public Animator animator;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         npcRigidbody = GetComponent<Rigidbody>();
         isDead = false;
+       // npc1 = gameObject.GetComponent<Animator>();
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        animator.enabled = false;
+
         if (!isDead)
         {
         //   Debug.Log("Rat");
@@ -60,15 +74,17 @@ public class ratBehaviourStates : MonoBehaviour
     public void RatDead()
     {
          npcRigidbody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-        Debug.Log("RATFROZEN");
+        //npc1.Play(deadAnimationName, 0, 0.0f);
         //agent.isStopped = true;
+        // npc1.Play();
+        animator.enabled = true;
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "CageFloor")
         {
-         Debug.Log("ratdead");
+         //Debug.Log("ratdead");
             isDead = true;
             agent.isStopped = true;
         }
