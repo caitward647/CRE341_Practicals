@@ -44,10 +44,4 @@ public class CaptureCount : MonoBehaviour
             NPCManager.instance.npcCount--;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

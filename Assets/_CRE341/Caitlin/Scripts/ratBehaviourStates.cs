@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPCRunAwayFromPlayer : MonoBehaviour
+public class ratBehaviourStates : MonoBehaviour
 {
     public float speed = 30f;
     public float safeDistance;
@@ -14,23 +14,30 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
     public float wanderRadius = 10f;
     public float wanderInterval = 10f;
 
-    private float _wanderTimer;
-    private bool _isWandering;
+   // private float _wanderTimer;
+    //private bool _isWandering;
     public Transform centrePoint;
     public int range;
     public Vector3 point;
+
+    private bool isDead;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         npcRigidbody = GetComponent<Rigidbody>();
+        isDead = false;
     }
 
     void Update()
     {
-      ratBehaviour();
+        if (!isDead)
+        {
+        //   Debug.Log("Rat");
+            RatBehaviour();
+        }
     }
 
-    void ratBehaviour() //different method
+    void RatBehaviour() //different method
     {
         if (player == null) return;
 
@@ -39,16 +46,35 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
         if ((distanceToPlayer < safeDistance))
         {
             RunAwayFromPlayer();
-
+        }
+        if (isDead)
+        {
+            RatDead();
         }
         else
         {
-            PatrolPoints();
+            RatWander();
         }
 
     }
+    public void RatDead()
+    {
+         npcRigidbody.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+        Debug.Log("RATFROZEN");
+        //agent.isStopped = true;
+    }
 
-    void RunAwayFromPlayer()
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "CageFloor")
+        {
+         Debug.Log("ratdead");
+            isDead = true;
+            agent.isStopped = true;
+        }
+    }
+
+    public void RunAwayFromPlayer()
     {
         {
             Vector3 directionToPlayer = transform.position - player.position;
@@ -62,7 +88,7 @@ public class NPCRunAwayFromPlayer : MonoBehaviour
         }
     }
 
-    public void PatrolPoints()
+    public void RatWander()
     {
        if (agent.remainingDistance <= agent.stoppingDistance) //done with path
        {
