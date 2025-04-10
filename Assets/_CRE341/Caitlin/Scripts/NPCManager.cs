@@ -17,7 +17,7 @@ public class NPCManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        npcText.text = "Npcs: " + npcCount.ToString();
+        npcText.text = "Rats caught: " + npcCount.ToString();
 
         if (npcCount == 50 & !allnpcCollect)
         {
