@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/z_BaseFiles/Scenes/Scene-SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/_CRE341/Scenes/Level_1.unity
+    guid: a3dc9c669c4b8b2479ef81607e304c8a
+  - enabled: 1
+    path: Assets/_CRE341/Caitlin/Scenes/Menu.unity
+    guid: 6132762e53727b14da9daaa55341e51d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

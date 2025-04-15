@@ -21,14 +21,15 @@ public class ratBehaviourStates : MonoBehaviour
     public NavMeshAgent agent;
     public float wanderRadius = 10f;
     public float wanderInterval = 10f;
-
-   // private float _wanderTimer;
+    
+    // private float _wanderTimer;
     //private bool _isWandering;
     public Transform centrePoint;
     public int range;
     public Vector3 point;
 
     public Animator animator;
+   // private Rigidbody rb;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class ratBehaviourStates : MonoBehaviour
 
     void Update()
     {
+      //  rb.linearVelocity = transform.forward;
         animator.enabled = false;
 
         if (!isDead)
@@ -114,6 +116,7 @@ public class ratBehaviourStates : MonoBehaviour
             {
                 Debug.DrawRay(point, Vector3.up, Color.red, 1.0f); //gizmos
                 agent.SetDestination(point);
+
             }
         }
     }
@@ -149,6 +152,15 @@ public class ratBehaviourStates : MonoBehaviour
                 //agent.Warp(hit.position);
                //agent.SetDestination(hit.position);
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision) //this is supposed to stop rats from getting stuck running into cages and keys.
+    {
+        if (collision.gameObject.CompareTag("interactiveObject")|| collision.gameObject.CompareTag("Cage"))
+        {
+           // Debug.Log("RAT HITS CAGE OR KEY");
+            transform.rotation = Quaternion.LookRotation(transform.forward * -1); //Rat turns around when collides with key or cage
         }
     }
 }
