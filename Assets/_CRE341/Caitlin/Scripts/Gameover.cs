@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class Gameover : MonoBehaviour
 {
+    private Timer timer;
+
     [Header("Levels To Load")]
     public string Menu;
     public string Level_1;
